@@ -75,10 +75,10 @@ php artisan key:generate
 
 ```
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=flea_market
-DB_USERNAME=root
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
 DB_PASSWORD=
 ```
 
