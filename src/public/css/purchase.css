@@ -1,0 +1,33 @@
+.purchase__wrap {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.purchase-item {
+  display: flex;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.purchase-item__image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.summary {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}

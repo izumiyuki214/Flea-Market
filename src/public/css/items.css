@@ -1,0 +1,52 @@
+.tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+
+.tabs__link {
+  padding: 10px 0;
+  color: #666;
+  font-weight: bold;
+}
+
+.tabs__link.is-active {
+  color: #ff5a5f;
+  border-bottom: 2px solid #ff5a5f;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.item-card__image-wrap {
+  aspect-ratio: 1;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.item-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-card__sold {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff5a5f;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.item-card__name {
+  margin-top: 8px;
+}

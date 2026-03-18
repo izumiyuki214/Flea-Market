@@ -1,0 +1,37 @@
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.detail__title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.detail__price {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.detail__section {
+  margin-top: 30px;
+}
+
+.tag {
+  background: #eee;
+  padding: 6px 10px;
+  border-radius: 20px;
+  margin-right: 6px;
+}
+
+.comment-card {
+  background: #f3f3f3;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
