@@ -15,7 +15,18 @@
 
             <div class="form__group">
                 <label class="form__label">プロフィール画像</label>
-                <input type="file" name="profile_image" class="form__input-file">
+                <div class="profile-image-area">
+
+                    <div class="profile-icon">
+                        @if($user->profile_image)
+                            <img src="{{ Storage::url($user->profile_image) }}">
+                        @endif
+                    </div>
+                    <label class="form__file-label">
+                        画像を選択する
+                        <input type="file" name="profile_image" class="form__input-file">
+                    </label>
+                </div>
             </div>
 
             <div class="form__group">

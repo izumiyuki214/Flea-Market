@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   font-family: Arial, sans-serif;
   background: #f8f8f8;
   color: #333;
@@ -15,10 +15,6 @@ body {
   padding: 32px 20px 80px;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
 
 img {
   max-width: 100%;
@@ -26,13 +22,17 @@ img {
 }
 
 .button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
   padding: 12px 20px;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  display: block;
+}
+
+.auth__switch {
+  text-align: center;
+  color: #55f;
 }
 
 .button--primary {
@@ -41,18 +41,17 @@ img {
   border: none;
 }
 
-.button--outline {
-  border: 1px solid #ff5a5f;
-  color: #ff5a5f;
-  background: white;
-}
-
 .button--block {
-  width: 100%;
+  margin-top: 70px;
+  width: 80%;
+}
+.auth__title {
+  text-align: center;
 }
 
 .form__group {
-  margin-bottom: 24px;
+  margin: 30px auto;
+  width: 80%;
 }
 
 .form__label {
@@ -74,4 +73,38 @@ img {
   color: red;
   font-size: 13px;
   margin-top: 6px;
+}
+
+.form__input-file {
+  display: none;
+}
+
+.profile-image-area {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  /* 未設定時の灰色 */
+  overflow: hidden;
+}
+
+.profile-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form__file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #f55;
+  border: 1px solid #f55;
+  cursor: pointer;
+  border-radius: 5px;
 }

@@ -10,7 +10,9 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <a href="{{ url('/') }}" class="header__logo">Flea Market</a>
+            <a href="{{ url('/') }}" class="header__logo">
+                <img class="header__logo-img" src="{{ asset('img/header-logo.png') }}" alt="代替テキスト">
+            </a>
 
             <form action="{{ url('/') }}" method="GET" class="header__search-form">
                 <input
@@ -27,16 +29,15 @@
 
             <nav class="header__nav">
                 @auth
-                    <a href="{{ url('/mypage') }}" class="header__link">マイページ</a>
-                    <a href="{{ url('/sell') }}" class="header__button">出品</a>
                     <form action="{{ route('logout') }}" method="POST" class="header__logout-form">
                         @csrf
                         <button type="submit" class="header__link header__logout-button">ログアウト</button>
                     </form>
                 @else
                     <a href="{{ url('/login') }}" class="header__link">ログイン</a>
-                    <a href="{{ url('/register') }}" class="header__button">会員登録</a>
                 @endauth
+                    <a href="{{ url('/mypage') }}" class="header__link">マイページ</a>
+                    <a href="{{ url('/sell') }}" class="header__button">出品</a>
             </nav>
         </div>
     </header>
@@ -45,16 +46,6 @@
         @if(session('success'))
             <div class="flash flash--success">
                 {{ session('success') }}
-            </div>
-        @endif
-
-        @if($errors->any())
-            <div class="flash flash--error">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
             </div>
         @endif
 
