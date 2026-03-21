@@ -18,12 +18,16 @@ class ProfileController extends Controller
             // デフォルト表示
         }
 
-        return view('profile.show');
+        $user = auth()->user();
+
+        return view('profile.show', compact('user'));
     }
 
     public function edit()
     {
-        return view('profile.edit');
+        $user = auth()->user();
+
+        return view('profile.edit', compact('user'));
     }
 
     public function update(Request $request)

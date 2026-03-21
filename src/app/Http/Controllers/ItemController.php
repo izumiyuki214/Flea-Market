@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
 
 class ItemController extends Controller
 {
@@ -11,12 +12,22 @@ class ItemController extends Controller
         $tab = $request->query('tab');
 
         if ($tab === 'mylist') {
-            // マイリスト表示
+            if (!Auth::check()) {
+                return redirect('/login');
+            }
+
+            $items = Auth::user()
+                ->likes()
+                ->with('condition', 'user')
+                ->latest()
+                ->get();
         } else {
-            // トップ商品一覧表示
+            $items = Item::with('condition', 'user')
+                ->latest()
+                ->get();
         }
 
-        return view('items.index');
+        return view('items.index', compact('items', 'tab'));
     }
 
     public function show(Item $item)
