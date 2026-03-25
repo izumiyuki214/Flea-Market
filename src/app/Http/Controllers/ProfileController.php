@@ -1,37 +1,60 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+
     public function show(Request $request)
     {
-        $page = $request->query('page');
+        $user = Auth::user()->load('profile');
+
+        $page = $request->query('page', 'sell');
 
         if ($page === 'buy') {
-            // 購入した商品一覧
-        } elseif ($page === 'sell') {
-            // 出品した商品一覧
+            $items = Item::whereHas('purchase', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->latest()->get();
         } else {
-            // デフォルト表示
+            $items = $user->items()->latest()->get();
         }
 
-        $user = auth()->user();
-
-        return view('profile.show', compact('user'));
+        return view('profile.show', compact('user', 'items', 'page'));
     }
 
     public function edit()
     {
-        $user = auth()->user();
+        $user = Auth::user()->load('profile');
 
         return view('profile.edit', compact('user'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
-        //
+        $user = Auth::user();
+
+        $profile = $user->profile()->firstOrNew([
+            'user_id' => $user->id,
+        ]);
+
+        $data = [
+            'nickname'    => $request->nickname,
+            'postal_code' => $request->postal_code,
+            'address'     => $request->address,
+            'building'    => $request->building,
+        ];
+
+        if ($request->hasFile('profile_image')) {
+            $path = $request->file('profile_image')->store('profiles', 'public');
+            $data['profile_image'] = $path;
+        }
+
+        $profile->fill($data);
+        $profile->save();
+
+        return redirect()->route('profile.show');
     }
 }
