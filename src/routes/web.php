@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
     Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 
-    Route::get('/mypage', [ProfileController::class, 'show'])->name('mypage.show');
-    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.profile.edit');
-    Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('mypage.profile.update');
+    Route::get('/mypage', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
