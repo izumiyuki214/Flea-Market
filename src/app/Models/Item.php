@@ -19,6 +19,15 @@ class Item extends Model
         'image_path'
     ];
 
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        return $query;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -37,6 +46,22 @@ class Item extends Model
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function likedUsers()
+    {
+        return $this->belongsToMany(User::class, 'likes');
+    }
+
+    public function isLikedBy($user)
+    {
+        if(!$user){
+            return false;
+        }
+
+        return $this->likes()
+            ->where('user_id',$user->id)
+            ->exists();
     }
 
     public function comments()

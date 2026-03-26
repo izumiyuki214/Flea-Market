@@ -26,20 +26,85 @@
   margin-bottom: 20px;
 }
 
+.detail__meta {
+  display: flex;
+  text-align: center;
+}
+
+.like-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.detail__meta--icon {
+  margin: 0 10px;
+  width: 20px;
+}
+
+.detail__meta--count {
+  margin: 0 auto;
+}
+
+.button--orange {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #fff;
+  background: #f55;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  display: block;
+}
+
 .detail__section {
   margin-top: 30px;
 }
 
 .tag {
   background: #eee;
-  padding: 6px 10px;
+  padding: 3px 10px;
   border-radius: 20px;
   margin-right: 6px;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .comment-card {
-  background: #f3f3f3;
-  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.comment-card__header {
+  display: flex;
+  align-items: center;
+}
+
+.comment__image {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-card__body {
+  background: #eee;
+  padding: 10px;
   border-radius: 6px;
-  margin-bottom: 10px;
+}
+
+.form__label {
+  margin: 0;
+  font-weight: bold;
+}
+
+.form__textarea {
+  line-height: 1.5;
+  width: 100%;
+}
+
+.form__error {
+  color: #f55;
 }

@@ -15,16 +15,44 @@
     <div class="detail__content">
         <h1 class="detail__title">{{ $item->name }}</h1>
         <p class="detail__brand">{{ $item->brand }}</p>
-        <p class="detail__price">¥{{ number_format($item->price) }}</p>
+        <p class="detail__price">¥{{ number_format($item->price) }}(税込)</p>
 
         <div class="detail__meta">
-            <span>♡ {{ $item->likes->count() }}</span>
-            <span>💬 {{ $item->comments->count() }}</span>
+            <div class="detail__meta-item">
+            @if(Auth::check())
+                @if ($item->isLikedBy(auth()->user()))
+                    <form action="{{ route('likes.destroy', $item) }}" method="POST" class="like-form">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="like-button">
+                            <img src="{{ asset('img/like-logo--pink.png') }}" alt="いいね解除" class="detail__meta--icon">
+                        </button>
+                    </form>
+                @else
+                    <form action="{{ route('likes.store', $item) }}" method="POST" class="like-form">
+                        @csrf
+                        <button type="submit" class="like-button">
+                            <img src="{{ asset('img/like-logo--default.png') }}" alt="いいね" class="detail__meta--icon">
+                        </button>
+                    </form>
+                @endif
+            @else
+                <a href="/login">
+                    <img src="{{ asset('img/like-logo--default.png') }}" class="detail__meta--icon">
+                </a>
+            @endif
+            <p class="detail__meta--count">{{ $item->likes()->count() }}</p>
+
+            </div>
+            <div class="detail__meta-item">
+                <img src="{{ asset('img/comment-logo.png') }}" class="detail__meta--icon">
+                <p class="detail__meta--count">{{ $item->comments->count() }}</p>
+            </div>
         </div>
 
         @auth
             @if(!$item->purchase)
-                <a href="{{ url('/purchase/' . $item->id) }}" class="button button--primary button--block">購入手続きへ</a>
+                <a href="{{ url('/purchase/' . $item->id) }}" class="button--orange">購入手続きへ</a>
             @endif
         @endauth
 
@@ -50,7 +78,8 @@
                 @foreach($item->comments as $comment)
                     <div class="comment-card">
                         <div class="comment-card__header">
-                            <strong>{{ $comment->user->name }}</strong>
+                            <img src="{{asset('storage/' . $comment->user->profile->profile_image)}}" class="comment__image">
+                            <strong  class="comment__name">{{ optional($comment->user->profile)->nickname }}</strong>
                         </div>
                         <p class="comment-card__body">{{ $comment->comment }}</p>
                     </div>
@@ -61,13 +90,13 @@
                 <form action="{{ route('comments.store', $item) }}" method="POST" class="form mt-16">
                     @csrf
                     <div class="form__group">
-                        <label class="form__label">商品へのコメント</label>
+                        <p class="form__label">商品へのコメント</p>
                         <textarea name="comment" rows="5" class="form__textarea">{{ old('comment') }}</textarea>
                         @error('comment')
                             <p class="form__error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <button type="submit" class="button button--primary button--block">コメントを送信する</button>
+                    <button type="submit" class="button--orange">コメントを送信する</button>
                 </form>
             @endauth
         </section>

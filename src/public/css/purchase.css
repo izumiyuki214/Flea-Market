@@ -19,6 +19,10 @@
   object-fit: cover;
 }
 
+.purchase-item__name {
+  margin-top: 0;
+}
+
 .panel {
   background: white;
   padding: 20px;

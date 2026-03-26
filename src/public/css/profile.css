@@ -25,3 +25,13 @@
 .profile__name {
   font-size: 26px;
 }
+
+.button--outline {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 20px;
+  color: #f55;
+  border: 1px solid #f55;
+  cursor: pointer;
+  border-radius: 5px;
+}

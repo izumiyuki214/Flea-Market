@@ -6,6 +6,7 @@
 }
 
 .tabs__link {
+  text-decoration: none;
   padding: 10px 0;
   color: #666;
   font-weight: bold;
@@ -20,6 +21,11 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+}
+
+.item-card {
+  text-decoration: none;
+  color: inherit;
 }
 
 .item-card__image-wrap {
@@ -48,5 +54,6 @@
 }
 
 .item-card__name {
+  color: #000;
   margin-top: 8px;
 }
