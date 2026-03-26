@@ -11,8 +11,8 @@
 <div class="profile">
     <div class="profile__header">
         <div class="profile__user">
-            <img src="{{ optional($user->profile)->profile_image ? asset('storage/' . $user->profile->profile_image) : asset('images/default-user.png') }}" alt="{{ $user->name }}" class="profile__image">
-            <h1 class="profile__name">{{ optional($user->profile)->nickname ?? $user->name }}</h1>
+            <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="{{ $user->name }}" class="profile__image">
+            <h1 class="profile__name">{{ optional($user->profile)->nickname }}</h1>
         </div>
         <a href="{{ route('profile.edit') }}" class="button button--outline">プロフィールを編集</a>
     </div>

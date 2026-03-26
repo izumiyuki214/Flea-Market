@@ -15,10 +15,11 @@
             </a>
 
             <form action="{{ url('/') }}" method="GET" class="header__search-form">
+            @csrf
                 <input
                     type="text"
                     name="keyword"
-                    value="{{ request('keyword') }}"
+                    value="{{ old('keyword') }}"
                     placeholder="なにをお探しですか？"
                     class="header__search-input"
                 >
