@@ -1,4 +1,5 @@
 .purchase__wrap {
+  padding: 30px;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 30px;
@@ -7,10 +8,6 @@
 .purchase-item {
   display: flex;
   gap: 20px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
 }
 
 .purchase-item__image {
@@ -24,14 +21,55 @@
 }
 
 .panel {
-  background: white;
   padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #000;
+}
+
+.panel__header-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-link {
+  text-decoration: none;
+  margin: auto 0;
 }
 
 .summary {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  margin: 20px;
+  border-top: 1px solid #000;
+}
+
+.summary__row {
+  border: 1px solid #000;
+  border-top: none;
+  padding: 25px 0;
+  text-align: center;
+  display: flex;
+}
+
+.summary__row span {
+  min-width: 120px;
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .summary__row {
+    flex-direction: column;
+  }
+  .purchase-item {
+    flex-direction: column;
+  }
+}
+
+.purchase-button {
+  margin: 50px 0;
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  background: #f55;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
 }
