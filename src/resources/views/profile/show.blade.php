@@ -26,7 +26,7 @@
         @forelse($items as $item)
             <a href="{{ url('/item/' . $item->id) }}" class="item-card">
                 <div class="item-card__image-wrap">
-                    <img src="{{ asset($item->image_path) }}" alt="{{ $item->name }}" class="item-card__image">
+                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="item-card__image">
                 </div>
                 <p class="item-card__name">{{ $item->name }}</p>
             </a>

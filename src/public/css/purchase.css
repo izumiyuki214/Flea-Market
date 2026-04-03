@@ -58,6 +58,9 @@
   .summary__row {
     flex-direction: column;
   }
+}
+
+@media (max-width: 600px) {
   .purchase-item {
     flex-direction: column;
   }

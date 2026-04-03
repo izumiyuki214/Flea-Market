@@ -9,7 +9,7 @@
 @section('content')
 <div class="detail">
     <div class="detail__image-area">
-        <img src="{{ asset($item->image_path) }}" alt="{{ $item->name }}" class="detail__image">
+        <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="detail__image">
     </div>
 
     <div class="detail__content">
@@ -51,8 +51,10 @@
         </div>
 
         @auth
-            @if(!$item->purchase)
-                <a href="{{ url('/purchase/' . $item->id) }}" class="button--orange">購入手続きへ</a>
+            @if(!$item->purchase && $item->user_id !== auth()->id())
+                <a href="{{ url('/purchase/' . $item->id) }}" class="button--orange">
+                    購入手続きへ
+                </a>
             @endif
         @endauth
 
