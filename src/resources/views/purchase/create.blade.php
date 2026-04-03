@@ -23,12 +23,23 @@
             <div class="panel">
                 <h2 class="panel__title">支払い方法</h2>
                 <select name="payment_method" id="payment_method" class="form__select" required>
-                    <option value="" disabled selected>選択してください</option>
-                    <option value="convenience" {{ old('payment_method') === 'convenience' ? 'selected' : '' }}>コンビニ支払い</option>
-                    <option value="card" {{ old('payment_method') === 'card' ? 'selected' : '' }}>カード支払い</option>
+                    <option value="" disabled {{ old('payment_method') ? '' : 'selected' }}>
+                        選択してください
+                    </option>
+
+                    <option value="convenience"
+                        {{ old('payment_method') === 'convenience' ? 'selected' : '' }}>
+                        コンビニ支払い
+                    </option>
+
+                    <option value="card"
+                        {{ old('payment_method') === 'card' ? 'selected' : '' }}>
+                        カード支払い
+                    </option>
                 </select>
+
                 @error('payment_method')
-                    <p class="form__error">{{ $message }}</p>
+                <p class="form__error">{{ $message }}</p>
                 @enderror
             </div>
 

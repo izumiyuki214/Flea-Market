@@ -10,24 +10,28 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <a href="{{ url('/') }}" class="header__logo">
-                <img class="header__logo-img" src="{{ asset('img/header-logo.png') }}" alt="代替テキスト">
-            </a>
+            <div class="header-left">
 
-            <form action="{{ url('/') }}" method="GET" class="header__search-form">
-            @csrf
-                <input
+                
+                <a href="{{ url('/') }}" class="header__logo">
+                    <img class="header__logo-img" src="{{ asset('img/header-logo.png') }}" alt="代替テキスト">
+                </a>
+                
+                <form action="{{ url('/') }}" method="GET" class="header__search-form">
+                    @csrf
+                    <input
                     type="text"
                     name="keyword"
                     value="{{ old('keyword') }}"
                     placeholder="なにをお探しですか？"
                     class="header__search-input"
-                >
-                @if(request('tab'))
+                    >
+                    @if(request('tab'))
                     <input type="hidden" name="tab" value="{{ request('tab') }}">
-                @endif
-            </form>
-
+                    @endif
+                </form>
+                
+            </div>
             <nav class="header__nav">
                 @auth
                     <form action="{{ route('logout') }}" method="POST" class="header__logout-form">
@@ -44,19 +48,6 @@
     </header>
 
     <main class="main">
-        @if(session('success'))
-            <div class="flash flash--success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if (count($errors) > 0)
-        <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-        </ul>
-        @endif
-
         @yield('content')
     </main>
 </body>
