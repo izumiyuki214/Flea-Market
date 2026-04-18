@@ -17,7 +17,7 @@ class ItemSeeder extends Seeder
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
             'condition_id' => 1,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(0).jpg'
+            'image_path' => 'items/sample0.jpg'
         ]);
         $item->categories()->attach([1,5,11,12]);
 
@@ -28,7 +28,7 @@ class ItemSeeder extends Seeder
             'description' => '高速で信頼性の高いハードディスク',
             'condition_id' => 2,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(1).jpg'
+            'image_path' => 'items/sample1.jpg'
         ]);
         $item->categories()->attach([2]);
 
@@ -39,7 +39,7 @@ class ItemSeeder extends Seeder
             'description' => '新鮮な玉ねぎ３束のセット',
             'condition_id' => 3,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(2).jpg'
+            'image_path' => 'items/sample2.jpg'
         ]);
         $item->categories()->attach([10]);
 
@@ -50,7 +50,7 @@ class ItemSeeder extends Seeder
             'description' => 'クラシックなデザインの革靴',
             'condition_id' => 4,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(3).jpg'
+            'image_path' => 'items/sample3.jpg'
         ]);
         $item->categories()->attach([1,5,11]);
 
@@ -61,7 +61,7 @@ class ItemSeeder extends Seeder
             'description' => '高性能なノートパソコン',
             'condition_id' => 1,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(4).jpg'
+            'image_path' => 'items/sample4.jpg'
         ]);
         $item->categories()->attach([2,3]);
 
@@ -72,7 +72,7 @@ class ItemSeeder extends Seeder
             'description' => '高音質のレコーディング用マイク',
             'condition_id' => 2,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(5).jpg'
+            'image_path' => 'items/sample5.jpg'
         ]);
         $item->categories()->attach([2,3]);
 
@@ -83,7 +83,7 @@ class ItemSeeder extends Seeder
             'description' => 'おしゃれなショルダーバッグ',
             'condition_id' => 3,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(6).jpg'
+            'image_path' => 'items/sample6.jpg'
         ]);
         $item->categories()->attach([1,4,11]);
 
@@ -94,7 +94,7 @@ class ItemSeeder extends Seeder
             'description' => '使いやすいタンブラー',
             'condition_id' => 4,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(7).jpg'
+            'image_path' => 'items/sample7.jpg'
         ]);
         $item->categories()->attach([3,10]);
 
@@ -105,7 +105,7 @@ class ItemSeeder extends Seeder
             'description' => '手動のコーヒーミル',
             'condition_id' => 1,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(8).jpg'
+            'image_path' => 'items/sample8.jpg'
         ]);
         $item->categories()->attach([3,10]);
 
@@ -116,7 +116,7 @@ class ItemSeeder extends Seeder
             'description' => '便利なメイクアップセット',
             'condition_id' => 2,
             'user_id' => User::first()->id,
-            'image_path' => 'items/sample(9).jpg'
+            'image_path' => 'items/sample9.jpg'
         ]);
         $item->categories()->attach([1,4,6]);
 
