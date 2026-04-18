@@ -68,7 +68,7 @@
 
 ```bash
 git clone https://github.com/izumiyuki214/Flea-Market.git
-cd flea-market
+cd Flea-Market
 ```
 
 ---
