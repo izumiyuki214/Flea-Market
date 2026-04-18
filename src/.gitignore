@@ -15,4 +15,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+/storage/app/public/*
+!/storage/app/public/items/
 !/storage/app/public/items/sample*

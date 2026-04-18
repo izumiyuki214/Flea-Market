@@ -4,7 +4,9 @@
 /src/vendor/
 /src/node_modules/
 /src/storage/*.key
-/src/storage/app/public
+/src/storage/app/public/*
+!/src/storage/app/public/items/
+!/src/storage/app/public/items/sample*
 /src/storage/framework/cache/data
 /src/storage/framework/sessions
 /src/storage/framework/testing
