@@ -88,6 +88,17 @@ docker compose exec php composer install
 cp src/.env.example src/.env
 docker compose exec php php artisan key:generate
 ```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=
+
+MAIL_FROM_ADDRESS="test@example.com"
+
+STRIPE_KEY=
+STRIPE_SECRET=
 
 ---
 
