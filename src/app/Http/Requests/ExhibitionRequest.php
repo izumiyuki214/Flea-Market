@@ -14,7 +14,7 @@ class ExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
             'categories' => 'required|array|min:1',
@@ -28,10 +28,10 @@ class ExhibitionRequest extends FormRequest
     public function messages()
     {
         return [
-            'image.required' => '商品画像を選択してください。',
-            'image.image' => '画像ファイルを選択してください。',
-            'image.mimes' => '画像は jpeg, png, jpg 形式でアップロードしてください。',
-            'image.max' => '画像サイズは2MB以下にしてください。',
+            'image_path.required' => '商品画像を選択してください。',
+            'image_path.image' => '画像ファイルを選択してください。',
+            'image_path.mimes' => '画像は jpeg, png, jpg 形式でアップロードしてください。',
+            'image_path.max' => '画像サイズは2MB以下にしてください。',
 
             'name.required' => '商品名を入力してください。',
             'name.max' => '商品名は255文字以内で入力してください。',

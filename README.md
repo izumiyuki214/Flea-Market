@@ -121,10 +121,14 @@ docker compose exec php php artisan storage:link
 
 ### 6. アクセス
 
-```
 http://localhost
-```
 
+---
+
+### 権限関係で開けない場合
+```bash
+sudo chmod -R 777 *
+```
 
 ## テスト
 
