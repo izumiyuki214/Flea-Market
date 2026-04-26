@@ -25,6 +25,9 @@ class ItemController extends Controller
                 ->get();
         } else {
             $items = Item::query()
+                ->when(Auth::check(), function ($query) {
+                    $query->where('user_id', '!=', Auth::id());
+                })
                 ->keywordSearch($keyword)
                 ->latest()
                 ->get();

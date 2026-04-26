@@ -19,10 +19,10 @@
                 <div class="panel_box">
                     <label class="form__file-button">
                         画像を選択する        
-                        <input type="file" name="image" class="form__input-file">
+                        <input type="file" name="image_path" class="form__input-file">
                     </label>
                 </div>
-                @error('image')
+                @error('image_path')
                     <p class="form__error">{{ $message }}</p>
                 @enderror
 

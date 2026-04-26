@@ -68,7 +68,7 @@
 
 ```bash
 git clone https://github.com/izumiyuki214/Flea-Market.git
-cd flea-market
+cd Flea-Market
 ```
 
 ---
@@ -88,7 +88,19 @@ docker compose exec php composer install
 cp src/.env.example src/.env
 docker compose exec php php artisan key:generate
 ```
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=
 
+MAIL_FROM_ADDRESS="test@example.com"
+
+STRIPE_KEY=
+STRIPE_SECRET=
+```
 ---
 
 ### 4. マイグレーション & シーディング
@@ -109,10 +121,14 @@ docker compose exec php php artisan storage:link
 
 ### 6. アクセス
 
-```
 http://localhost
-```
 
+---
+
+### 権限関係で開けない場合
+```bash
+sudo chmod -R 777 *
+```
 
 ## テスト
 
