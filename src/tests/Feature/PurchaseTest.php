@@ -202,7 +202,7 @@ class PurchaseTest extends TestCase
                 ],
             ])
             ->post(route('purchase.store', $item), [
-                'payment_method' => 'card',
+                'payment_method' => 'convenience',
             ]);
 
         $response->assertRedirect('/mypage?page=buy');
@@ -212,7 +212,7 @@ class PurchaseTest extends TestCase
             'postal_code' => '111-1111',
             'address' => '東京都渋谷区',
             'building' => '渋谷ビル',
-            'payment_method' => 'card',
+            'payment_method' => 'convenience',
         ]);
     }
 }

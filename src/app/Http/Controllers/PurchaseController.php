@@ -7,6 +7,8 @@ use App\Models\Item;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class PurchaseController extends Controller
 {
@@ -23,7 +25,7 @@ class PurchaseController extends Controller
         }
 
         if ($item->purchase) {
-            return redirect('/')->with('error', 'この商品はすでに購入されています。');
+            return redirect('/');
         }
 
         $sessionAddress = session('purchase_address.' . $item->id);
@@ -82,11 +84,34 @@ class PurchaseController extends Controller
         $item = Item::with('purchase')->findOrFail($item_id);
 
         if ($item->user_id === $user->id) {
-            return redirect('/')->with('error', '自分が出品した商品は購入できません。');
+            return redirect('/');
         }
 
         if ($item->purchase) {
-            return redirect('/')->with('error', 'この商品はすでに購入されています。');
+            return redirect('/');
+        }
+
+        if ($request->payment_method === 'card') {
+            Stripe::setApiKey(config('services.stripe.secret'));
+
+            $session = Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => 'jpy',
+                        'product_data' => [
+                            'name' => $item->name,
+                        ],
+                        'unit_amount' => $item->price,
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'success_url' => url('/purchase/success/' . $item->id),
+                'cancel_url' => url('/purchase/' . $item->id),
+            ]);
+
+            return redirect($session->url);
         }
 
         $sessionAddress = session('purchase_address.' . $item->id);
@@ -112,6 +137,6 @@ class PurchaseController extends Controller
 
         session()->forget('purchase_address.' . $item->id);
 
-        return redirect('/mypage?page=buy')->with('success', '商品を購入しました。');
+        return redirect('/mypage?page=buy');
     }
 }
